@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="head">
+      <p id="head1">Color-Flipper</p>
+      <p id="head2">Simple RGB</p>
+    </div>
+    <div id="mainContent">
+      <div id="hh">
+        <h1>Background Color :</h1>
+        <h2></h2>
+      </div>
+      <button onclick="colorFlipper()">Click me</button>
+    </div>
+  </body>
+  <script>
+    let heading = document.querySelector("h2");
+    let bod = document.querySelector("body");
+    let btn = document.querySelector("button");
+    btn.addEventListener("mouseover", function () {
+      btn.style.backgroundColor = "rgb(25, 29, 29)";
+    });
+    btn.addEventListener("mouseout", function () {
+      btn.style.background = "transparent";
+    });
+    function colorFlipper() {
+      function randomColor() {
+        let a = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        let c = Math.floor(Math.random() * 256);
+        return ["rgb(", a, ",", b, ",", c, ")"].join("");
+      }
+      console.log(randomColor());
+      bod.style.backgroundColor = randomColor();
+      heading.textContent = `${randomColor()} `;
+    }
+  </script>
+</html>
